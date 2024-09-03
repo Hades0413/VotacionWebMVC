@@ -1,0 +1,126 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso</title>
+    @Styles.Render("~/Content/css")
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .form-control {
+            background-color: #333;
+            border: none;
+            border-radius: 30px;
+            padding: 20px;
+            height: auto;
+            color: #e0e0e0;
+        }
+
+        .form-control::placeholder {
+            color: #b0b0b0;
+        }
+
+        .btn-primary {
+            border-radius: 30px;
+            padding: 10px;
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .card-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        .footer-text a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+
+        .login-logo img {
+            max-height: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="card">
+            <div class="card-body">
+                <div class="login-logo text-center">
+                    <img src="@Url.Content("~/Imagenes/votacion.jpg")" alt="Logo">
+                </div>
+                <form action="@Url.Content("~/Votacion/Ingreso")" method="post" class="mt-4" autocomplete="off">
+                    <div class="form-group text-center">
+                        <label for="documentoidentidad" class="font-weight-bold">Documento Identidad</label>
+                        <input type="text" class="form-control" name="documentoidentidad" id="documentoidentidad" required placeholder="Ingrese su documento de identidad">
+                    </div>
+                    <div class="form-group">
+                        @if (ViewBag.Mensaje != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewBag.Mensaje
+                            </div>
+                        }
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                    </div>
+                </form>
+                <div class="footer-text mt-4">
+                    <p>&copy; 2024 Todos los derechos reservados. <a href="https://github.com/Hades0413" target="_blank">Hades0413</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
